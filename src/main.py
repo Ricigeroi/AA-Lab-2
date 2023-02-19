@@ -2,11 +2,12 @@ import random
 import time
 import threading
 import matplotlib.pyplot as plt
+import psutil
 
 # Size of arrays
-small_n = 1000
-medium_n = 10000
-large_n = 100000
+small_n = 100
+medium_n = 1000
+large_n = 10000
 
 # Partially sorted %
 part_n = 0.2
@@ -147,14 +148,13 @@ def time_sort(sort_fn, arr):
 
 
 def get_time(sort_fn):
-    return [
+    return ([
         time_sort(sort_fn, small_array.copy()),
         time_sort(sort_fn, medium_array.copy()),
         time_sort(sort_fn, large_array.copy()),
         time_sort(sort_fn, sorted_array.copy()),
         time_sort(sort_fn, partially_sorted_array.copy())
-    ]
-
+    ])
 
 # getting results
 bubble_time = [time_sort(bubble_sort, small_array), None, None, time_sort(bubble_sort, sorted_array), None]
